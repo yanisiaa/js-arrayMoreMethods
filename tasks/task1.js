@@ -12,6 +12,7 @@ function getPopularCategories(products)
       .filter((category, index, array) => array.indexOf(category) === index);
 }
 
+
 // Приклад використання:
 const products = [
   { name: 'Phone', category: 'Electronics', sales: 10 },
