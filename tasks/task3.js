@@ -8,8 +8,23 @@
 // })
 "Для заокруглення числа можна до десятих використовуйте .toFixed(1)"
 
-function addSuccessPercent(olympicRepresentation) {
-  // Ваш код
+function addSuccessPercent(data) {
+  return data.map(sport => {
+    let percent;
+
+    if (sport.athletes === 0 && sport.medals === 0) {
+      percent = '0%';
+    } else if (sport.medals === 0) {
+      percent = '0.0%';
+    } else {
+      percent = (sport.medals / sport.athletes * 100).toFixed(1) + '%';
+    }
+
+    return {
+      ...sport,
+      percentOfSuccess: percent
+    };
+  });
 }
 
 const olympicRepresentation = [

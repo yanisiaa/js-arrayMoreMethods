@@ -12,7 +12,18 @@ const products = [
 ];
 
 function getProductsNotInPriceRange(products) {
-  // Ваш код
+  if (!Array.isArray(products)) {
+    throw new Error("Input must be an array of products");
+  }
+
+  return products
+    .filter(product => {
+      if (typeof product !== 'object' || typeof product.price !== 'number') {
+        throw new Error("Each item in the array must be an object with a valid 'price' property");
+      }
+      return product.price < 100 || product.price > 500;
+    })
+    .map(product => product.name); 
 }
 
 console.log(getProductsNotInPriceRange(products));
